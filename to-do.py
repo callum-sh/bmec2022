@@ -1,13 +1,18 @@
+from importlib.machinery import WindowsRegistryFinder
 import tkinter as tk
-from tkinter import StringVar, messagebox
 from tkinter import *
 import tkinter.font as tkFont
-from turtle import color
-import platform
-
+ 
 app = tk.Tk()
 
 app.title('BMEC2022: Power Ranger To-Do Demo')
+fontStyle = tkFont.Font(family="Open Sans", size = 30)
+
+
+canvas = Canvas(app, bg="white", height=1000, width=1000)
+canvas.create_text(350, 30, text="Task", fill="black", font=fontStyle)
+canvas.pack()
+
 
 NUM_TASKS = 14
 i = 0
@@ -17,9 +22,7 @@ tsk = StringVar()
 desc = StringVar()
 
 app.geometry("900x500")
-fontStyle = tkFont.Font(family="Open Sans", size = 30)
-
-tsk.set("Click 'Finish Task' to Start")
+app.resizable(0, 0)
 
 tasks = {0:"Wash, brush teeth, get dressed", 
 1:"Prepare and eat breakfast", 
@@ -37,27 +40,56 @@ tasks = {0:"Wash, brush teeth, get dressed",
 13:"Play cards, watch a movie, give a massage",
 14:"Take a bath, get ready for bed, read a book"}
 
+tasks_second_info = {0:"Location: bathroom", 
+1:"Location: kitchen", 
+2:"Location: kitchen", 
+3:"Location: living room", 
+4:"Location: living room", 
+5:"Location: living room", 
+6:"Location: garden", 
+7:"Location: kitchen", 
+8:"Location: living room", 
+9:"Location: garden", 
+10:"Location: bedroom", 
+11:"Location: kitchen", 
+12:"Location: dining room", 
+13:"Location: living room",
+14:"Location: bathroom/bedroom"}
 
 def onButtonPush():
     global i
     i = i + 1
     global num
     num = i % NUM_TASKS
-    tsk.set(tasks[num])
+
+    task_box = Canvas(app, bg="#add8e6")
+    task_box.create_text(250, 80, text=tasks[num], fill="black", font=fontStyle)
+    task_box.place(x=320, y=60, height=270, width=570)
+
+    loc = Canvas(app, bg='#ffcccb')
+    loc.create_text(250, 80, text=tasks_second_info[num], fill="black", font=fontStyle)
+    loc.place(x=320, y=340, height=150, width=570)
+
+temp = Canvas(app, bg="#add8e6")
+temp.create_text(250, 80, text="Press 'Next Task' to Start", fill="black", font=fontStyle)
+temp.place(x=320, y=60, height=270, width=570)
+
+loc_temp = Canvas(app, bg='#ffcccb')
+loc_temp.create_text(250, 80, text="Location Info", fill="black", font=fontStyle)
+loc_temp.place(x=320, y=340, height=150, width=570)
 
 task_label_txt = StringVar()
 task_label_txt.set("Task")
 
-task_label = tk.Message(app, textvariable=task_label_txt, font=fontStyle, width=400)
-task_label.config(borderwidth=10, fg='white')
-task_label.place(x=320, y=10)
+# task_label = tk.Message(app, textvariable=task_label_txt, font=fontStyle, width=400)
+# task_label.place(x=330, y=10)
 
-
-button = tk.Button(app, text="Finished Task", highlightbackground="#90ee90", fg="Black", highlightthickness=200, command=onButtonPush)
+button = tk.Button(app, text="Next Task", font=fontStyle, highlightbackground="#90ee90", fg="Black", highlightthickness=200, command=onButtonPush)
 button.place(x=10, y=10, width=300, height=480)
 
-label = tk.Message(app, textvariable=tsk, font=fontStyle, width=400)
-label.config(borderwidth=10, fg='black', background='#add8e6')
-label.place(x=350, y=70)
+# label = tk.Message(app, textvariable=tsk, font=fontStyle, width=400)
+# label.place(x=350, y=70)
+
+
 
 app.mainloop()
