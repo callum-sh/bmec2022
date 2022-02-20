@@ -27,7 +27,7 @@ canvas.create_text(350, 30, text="Task", fill="black", font=fontStyle)
 canvas.pack()
 
 # Data Struct to store each task as follows: (task, location)
-tasks = {0: ("MORNING TASKS", "Time: 8:00am"),
+tasks = {0: ("MORNING TASKS", "Come back at: 8:00am"),
 1:("Wash, brush teeth, get dressed", "Location: bathroom"),
 2: ("Prepare and eat breakfast", "Location: kitchen"), 
 3: ("Have a conversation over coffee", "Location: kitchen"), 
@@ -35,12 +35,12 @@ tasks = {0: ("MORNING TASKS", "Time: 8:00am"),
 5: ("Take a break, have some quiet time", "Location: living room"), 
 6: ("Do some chores together", "Location: living room"),
 7: ("Take a walk, play an active game", "Location: garden"),
-8: ("LUNCH TASKS", "Time: 12:00pm"),
+8: ("LUNCH TASKS", "Come back at: 12:00pm"),
 9: ("Prepare and eat lunch, read mail, wash dishes", "Location: kitchen"),
 10: ("Listen to music, do crossword puzzles, watch TV","Location: living room"), 
 11: ("Do some gardening, take a walk, visit a friend", "Location: garden"),
 12: ("Take a short break or nap", "Location: bedroom"),
-13: ("DINNER TASKS", "Time: 6:00pm"),
+13: ("DINNER TASKS", "Come back at: 6:00pm"),
 14: ("Prepare and eat dinner, clean up the kitchen", "Location: kitchen"),
 15: ("Reminisce over coffee and dessert", "Location: dining room"), 
 16: ("Play cards, watch a movie, give a massage", "Location: living room"),
